@@ -1,0 +1,26 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700;800&display=swap");
+@import "tailwindcss";
+
+
+:root {
+  font-family: "Noto Sans", sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: #f8fafc;
+  color: #172033;
+  font-family: Arial, sans-serif;
+}
+
+h1,
+h2,
+p,
+h3 {
+  font-family: "Noto Sans", sans-serif;
+  letter-spacing: -0.02em;
+}
