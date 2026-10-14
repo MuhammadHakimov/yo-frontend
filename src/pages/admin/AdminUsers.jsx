@@ -5,6 +5,7 @@ import UserLogoDiv from "../../Typography/UserLogoDiv";
 
 function AdminUsers() {
   const { data, isLoading, error } = useGetUsersQuery();
+  console.log(data);
 
   const users = data?.users || [];
 

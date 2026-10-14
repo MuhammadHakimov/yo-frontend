@@ -241,22 +241,6 @@ function AdminUserDetails() {
                 {user.level || "Beginner"}
               </p>
             </div>
-
-            <div className="rounded-xl bg-slate-50 p-4 sm:p-5">
-              <p className="text-sm text-slate-500">Тестҳо</p>
-
-              <p className="mt-2 text-xl font-bold sm:text-2xl">
-                {user.testsCompleted || 0}
-              </p>
-            </div>
-
-            <div className="rounded-xl bg-slate-50 p-4 sm:p-5">
-              <p className="text-sm text-slate-500">Вазифаҳо</p>
-
-              <p className="mt-2 text-xl font-bold sm:text-2xl">
-                {user.tasksCompleted || 0}
-              </p>
-            </div>
           </div>
 
           <div className="mt-6">
