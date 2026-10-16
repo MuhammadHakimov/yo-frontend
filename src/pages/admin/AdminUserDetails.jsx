@@ -40,7 +40,18 @@ function AdminUserDetails() {
       const data = await deleteUser(user.id).unwrap();
       navigate("/admin/users");
     } catch (error) {
-      console.error("DELETE ERROR:", error);    }
+      console.error("DELETE ERROR:", error);    
+    const handleDeleteUser = async () => {
+  try {
+    await deleteUser(user.id).unwrap();
+    navigate("/admin/users");
+  } catch (error) {
+    console.error("DELETE ERROR:", error);
+    console.log("STATUS:", error?.status);
+    console.log("DATA:", error?.data);
+  }
+};}
+
   };
 
   if (loading) {
