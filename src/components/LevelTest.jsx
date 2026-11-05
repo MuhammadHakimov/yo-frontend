@@ -66,7 +66,7 @@ function LevelTest() {
         body: JSON.stringify({
           email: user.email,
           correctAnswers,
-          totalQuestions: 50,
+          totalQuestions: 40,
         }),
       });
 
