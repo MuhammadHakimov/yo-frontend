@@ -12,6 +12,7 @@ import {
   SpellCheck2,
   Tv,
 } from "lucide-react";
+import TelegramBanner from "../components/banners/TelegramBanner";
 function Home() {
   const technologies = [
     {
@@ -94,6 +95,7 @@ function Home() {
       </section>
 
       <TopHighUsers />
+      <TelegramBanner />
       <section id="lessons" className="bg-slate-50 py-20 md:py-24">
         <div className="mx-auto w-[90%] max-w-7xl">
           <span className="text-xs font-bold uppercase tracking-widest text-blue-600">
