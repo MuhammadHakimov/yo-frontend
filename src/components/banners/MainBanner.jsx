@@ -14,7 +14,7 @@ function MainBanner() {
 
 
           <h1 className="mt-7 max-w-3xl text-2xl font-black   text-slate-950 sm:text-5xl md:text-5,5xl ">
-            Барои барномасозон ва са
+            Барои барномасозон ва 
             <br />
             ё нафароне, ки 
             <br />
