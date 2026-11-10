@@ -91,8 +91,12 @@ function TestComponent({
 
       const result = await response.json();
 
-      if (response.ok && result.user) {
-        dispatch(login(result.user));
+      if (response.ok) {
+        dispatch(
+          login(
+            result.user || { ...user, xp: result.xp, level: result.level },
+          ),
+        );
       }
     } catch (error) {
       console.error("XP REQUEST ERROR:", error);

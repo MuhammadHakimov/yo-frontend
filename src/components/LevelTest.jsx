@@ -77,17 +77,28 @@ async function finishLevelTest(correctAnswers) {
       throw new Error(data.message || "Сатҳро муайян кардан нашуд");
     }
 
-    const userResponse = await fetch(
-      `${API_URL}/api/users?email=${encodeURIComponent(user.email)}`,
-    );
+    // Level was already saved in PostgreSQL by the POST above, so the response
+    // is the source of truth. Try to get the full fresh user (xp, history...) too,
+    // but never fail the whole flow if this extra request does not work.
+    let freshUser = data.user || null;
 
-    const userData = await userResponse.json();
+    if (!freshUser) {
+      try {
+        const userResponse = await fetch(
+          `${API_URL}/api/users/profile?email=${encodeURIComponent(user.email)}`,
+        );
+        const userData = await userResponse.json();
 
-    if (!userResponse.ok || !userData.user) {
-      throw new Error("Маълумоти навшудаи корбар гирифта нашуд.");
+        if (userResponse.ok && userData.user) {
+          freshUser = userData.user;
+        }
+      } catch (profileError) {
+        console.error("LEVEL TEST PROFILE REFRESH ERROR:", profileError);
+      }
     }
 
-    dispatch(login(userData.user));
+    // Updates Redux and localStorage("user") in one place (see registrSlice.login).
+    dispatch(login({ ...user, ...(freshUser || {}), level: data.level }));
 
     setResult(data);
   } catch (error) {

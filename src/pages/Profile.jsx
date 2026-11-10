@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { logout } from "../store/counter/registrSlice";
+import { login, logout } from "../store/counter/registrSlice";
 import { API_URL } from "../config/api";
 import { Mail, ShieldCheck, TrendingUpDown } from "lucide-react";
 import UserLogoDiv from "../Typography/UserLogoDiv";
@@ -23,13 +23,15 @@ function Profile() {
     const getUser = async () => {
       try {
         const response = await fetch(
-          `${API_URL}/api/users/profile?email=${reduxUser.email}`,
+          `${API_URL}/api/users/profile?email=${encodeURIComponent(reduxUser.email)}`,
         );
 
         const data = await response.json();
 
         if (response.ok && data.user) {
           setUser(data.user);
+          // Keep Redux + localStorage in sync with the database (level, xp).
+          dispatch(login({ ...reduxUser, ...data.user }));
         } else {
           console.error("PROFILE ERROR:", data);
         }
