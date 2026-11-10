@@ -136,12 +136,6 @@ const AdminMessages = () => {
                     <h2 className="font-semibold text-gray-800">
                       {message.name || "Беном"}
                     </h2>
-
-                    {message.email && (
-                      <p className="mt-1 text-sm text-gray-500">
-                        {message.email}
-                      </p>
-                    )}
                   </div>
 
                   <button
