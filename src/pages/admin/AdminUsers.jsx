@@ -61,7 +61,9 @@ function AdminUsers() {
           </div>
         ) : (
           <div className="grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-3">
-            {users.map((user) => (
+            {[...users]
+  .sort((a, b) => Number(b.xp || 0) - Number(a.xp || 0))
+  .map((user) => (
               <Link to={`/admin/users/${user.id}`} key={user.id}>
                 <div
                   key={user.id}
