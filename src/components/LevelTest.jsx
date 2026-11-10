@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import TestComponent from "../components/TestComponent";
@@ -80,9 +79,12 @@ function LevelTest() {
       setResult(data);
       console.log(data);
 
-      if (data.user) {
-        dispatch(login(data.user));
-      }
+      dispatch(
+        login({
+          ...user,
+          level: data.level,
+        }),
+      );
     } catch (error) {
       console.error("LEVEL TEST POST ERROR:", error);
 
