@@ -76,9 +76,9 @@ function AdminUsers() {
                         {user.name} {user.surename}
                       </h2>
 
-                      <div className="mt-1 flex items-center gap-2 text-sm text-slate-500">
+                      <div className="mt-1 flex truncate items-center gap-2 text-sm text-slate-500">
                         <Mail className="h-4 w-4" />
-                        <span className="truncate">{user.email}</span>
+                        <span className="">{user.email}</span>
                       </div>
                     </div>
                   </div>

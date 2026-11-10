@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import TestComponent from "../components/TestComponent";
@@ -65,7 +66,7 @@ function LevelTest() {
         },
         body: JSON.stringify({
           email: user.email,
-          correctAnswers,
+          score: Number(correctAnswers),
           totalQuestions: 40,
         }),
       });
@@ -138,7 +139,7 @@ function LevelTest() {
           </p>
 
           <p className="mt-4 text-slate-500">
-            {result.correctAnswers} аз {result.totalQuestions} ҷавоб дуруст
+            {result.score} аз {result.totalQuestions} ҷавоб дуруст
           </p>
 
           <p className="mt-2 text-slate-500">Натиҷа: {result.percentage}%</p>
