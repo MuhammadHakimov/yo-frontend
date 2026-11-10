@@ -48,49 +48,54 @@ function LevelTest() {
     getTests();
   }, []);
 
-  async function finishLevelTest(correctAnswers) {
-    try {
-      setError("");
 
-      if (!user?.email) {
-        throw new Error(
-          "Корбар ворид нашудааст. Аввал ба аккаунт ворид шавед.",
-        );
-      }
+async function finishLevelTest(correctAnswers) {
+  try {
+    setError("");
 
-      const response = await fetch(`${API_URL}/api/users/level-test`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          email: user.email,
-          score: Number(correctAnswers),
-          totalQuestions: 40,
-        }),
-      });
-
-      const data = await response.json();
-
-      if (!response.ok) {
-        throw new Error(data.message || "Сатҳро муайян кардан нашуд");
-      }
-
-      setResult(data);
-      console.log(data);
-
-      dispatch(
-        login({
-          ...user,
-          level: data.level,
-        }),
+    if (!user?.email) {
+      throw new Error(
+        "Корбар ворид нашудааст. Аввал ба аккаунт ворид шавед.",
       );
-    } catch (error) {
-      console.error("LEVEL TEST POST ERROR:", error);
-
-      setError(error.message || "Ҳангоми муайян кардани сатҳ хатогӣ рух дод");
     }
+
+    const response = await fetch(`${API_URL}/api/users/level-test`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email: user.email,
+        score: Number(correctAnswers),
+        totalQuestions: 40,
+      }),
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      throw new Error(data.message || "Сатҳро муайян кардан нашуд");
+    }
+
+    const userResponse = await fetch(
+      `${API_URL}/api/users?email=${encodeURIComponent(user.email)}`,
+    );
+
+    const userData = await userResponse.json();
+
+    if (!userResponse.ok || !userData.user) {
+      throw new Error("Маълумоти навшудаи корбар гирифта нашуд.");
+    }
+
+    dispatch(login(userData.user));
+
+    setResult(data);
+  } catch (error) {
+    console.error("LEVEL TEST POST ERROR:", error);
+    setError(error.message || "Ҳангоми муайян кардани сатҳ хатогӣ рух дод");
   }
+}
+
 
   if (loading) {
     return (
