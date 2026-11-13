@@ -27,6 +27,8 @@ import {
   Zap,
   ProjectorIcon,
 } from "lucide-react";
+import { Link } from "react-router-dom";
+import TelegramBanner from "../../components/banners/TelegramBanner";
 
 function Architectures() {
   const technologies = [
@@ -460,83 +462,10 @@ function Architectures() {
             </div>
           </div>
         </section>
+        <div id="bot">
+        <TelegramBanner/>
+        </div>
 
-        <section className="mt-20">
-          <div className="mb-8 text-center">
-            <span className="text-xs font-bold uppercase tracking-[0.2em] text-slate-500">
-              Level 05
-            </span>
-
-            <h2 className="mt-2 text-2xl font-bold text-slate-900 sm:text-3xl">
-              Архитектураи техникии платформа
-            </h2>
-          </div>
-
-          <div className="grid gap-5 lg:grid-cols-3">
-            <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-blue-50 text-blue-600">
-                <Monitor size={23} />
-              </div>
-
-              <h3 className="mt-4 text-lg font-bold text-slate-900">Client</h3>
-
-              <div className="mt-4 space-y-2 text-sm text-slate-600">
-                <div className="rounded-lg bg-slate-50 px-3 py-2">React</div>
-                <div className="rounded-lg bg-slate-50 px-3 py-2">
-                  React Router
-                </div>
-                <div className="rounded-lg bg-slate-50 px-3 py-2">
-                  Redux Toolkit
-                </div>
-                <div className="rounded-lg bg-slate-50 px-3 py-2">
-                  Tailwind CSS
-                </div>
-              </div>
-            </div>
-
-            <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-emerald-50 text-emerald-600">
-                <Server size={23} />
-              </div>
-
-              <h3 className="mt-4 text-lg font-bold text-slate-900">Backend</h3>
-
-              <div className="mt-4 space-y-2 text-sm text-slate-600">
-                <div className="rounded-lg bg-slate-50 px-3 py-2">Node.js</div>
-                <div className="rounded-lg bg-slate-50 px-3 py-2">
-                  Express.js
-                </div>
-                <div className="rounded-lg bg-slate-50 px-3 py-2">REST API</div>
-                <div className="rounded-lg bg-slate-50 px-3 py-2">
-                  Authentication
-                </div>
-              </div>
-            </div>
-
-            <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-violet-50 text-violet-600">
-                <Database size={23} />
-              </div>
-
-              <h3 className="mt-4 text-lg font-bold text-slate-900">
-                Data & Services
-              </h3>
-
-              <div className="mt-4 space-y-2 text-sm text-slate-600">
-                <div className="rounded-lg bg-slate-50 px-3 py-2">Users</div>
-                <div className="rounded-lg bg-slate-50 px-3 py-2">
-                  Lessons / Tests / Tasks
-                </div>
-                <div className="rounded-lg bg-slate-50 px-3 py-2">
-                  History / Facts
-                </div>
-                <div className="rounded-lg bg-slate-50 px-3 py-2">
-                  AI Services
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
 
         <section className="mt-20">
           <div className="mb-8 text-center">
@@ -575,10 +504,11 @@ function Architectures() {
               const Icon = item.icon;
 
               return (
+                
                 <div
                   key={item.title}
                   className="rounded-2xl border border-slate-200 bg-white p-6 text-center shadow-sm"
-                >
+                ><a href={'#bot'}>
                   <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-blue-50 text-blue-600">
                     <Icon size={25} />
                   </div>
@@ -589,7 +519,7 @@ function Architectures() {
 
                   <p className="mt-1 text-sm text-slate-500">
                     {item.description}
-                  </p>
+                  </p></a>
                 </div>
               );
             })}

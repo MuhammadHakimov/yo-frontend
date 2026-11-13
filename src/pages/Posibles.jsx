@@ -1,3 +1,4 @@
+import TelegramBanner from './../components/banners/TelegramBanner';
 import {
   BookOpen,
   BrainCircuit,
@@ -162,6 +163,7 @@ function Features() {
           </div>
         </div>
       </section>
+      <TelegramBanner />
 
       <section className="border-t border-slate-200 bg-white px-4 py-20 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">

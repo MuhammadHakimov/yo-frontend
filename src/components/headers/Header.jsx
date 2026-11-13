@@ -1,12 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
-import {
-  User,
-  UserLock,
-  Menu,
-  X,
-  ChevronDown,
-} from "lucide-react";
+import { User, UserLock, Menu, X, ChevronDown } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import LOP from "../../assets/LOP.png";
 
@@ -78,7 +72,7 @@ function Header() {
   ];
 
   const isMoreActive = moreLinks.some(
-    (link) => location.pathname === link.path
+    (link) => location.pathname === link.path,
   );
 
   const mainLinks = [
@@ -89,6 +83,10 @@ function Header() {
     {
       name: "Дарсҳо",
       path: "/lessons",
+    },
+    {
+      name: "Роҳнамо",
+      path: "/guides",
     },
     {
       name: "Тестҳо",

@@ -47,6 +47,7 @@ import HistoryLayout from "./Layouts/HistoryLayout";
 import Facts from "./pages/FrontHistory/Facts";
 import FactDetails from "./pages/FrontHistory/FactDetails";
 import Architectures from "./pages/FrontHistory/Architectures";
+import Guide from './pages/Guide';
 
 function App() {
   return (
@@ -73,6 +74,7 @@ function App() {
         <Route path="/future" element={<FuturePlans />} />
         <Route path="/posibles" element={<Posibles />} />
         <Route path="/about" element={<AboutPlatform />} />
+        <Route path="/guides" element={<Guide />} />
       </Route>
       <Route element={<HistoryLayout />}>
         <Route path="/history" element={<History />} />

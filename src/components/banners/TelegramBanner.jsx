@@ -6,7 +6,7 @@ const TelegramBanner = () => {
   const botLink = "https://t.me/Erdamchy_bot";
 
   return (
-    <div className="w-full px-0 py-8">
+    <div className="w-full px-0 py-8" id='bot'>
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
